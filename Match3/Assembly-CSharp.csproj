@@ -53,43 +53,43 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Client\ViewStates\GameViewState.cs" />
+     <Compile Include="Assets\DOTween\Modules\DOTweenModuleSprite.cs" />
      <Compile Include="Assets\Scripts\Client\ModelStates\InitModelState.cs" />
      <Compile Include="Assets\Scripts\Client\Resources.cs" />
+     <Compile Include="Assets\Scripts\Client\Model\Input.cs" />
      <Compile Include="Assets\Scripts\Client\ViewStates\LoadingViewState.cs" />
      <Compile Include="Assets\Scripts\Client\Root.cs" />
      <Compile Include="Assets\Scripts\Client\ModelStates\BaseModelState.cs" />
      <Compile Include="Assets\Scripts\Client\Presenter.cs" />
      <Compile Include="Assets\Scripts\Client\World.cs" />
      <Compile Include="Assets\Scripts\Client\View\ClientView.cs" />
+     <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics.cs" />
+     <Compile Include="Assets\DOTween\Modules\DOTweenModuleAudio.cs" />
      <Compile Include="Assets\Scripts\Client\View\Screens.cs" />
      <Compile Include="Assets\Scripts\Client\GameLogic.cs" />
+     <Compile Include="Assets\Scripts\Client\View\GameMenu.cs" />
+     <Compile Include="Assets\Scripts\Client\View\MainMenu.cs" />
+     <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics2D.cs" />
      <Compile Include="Assets\Scripts\Client\View\UnityScene.cs" />
+     <Compile Include="Assets\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
+     <Compile Include="Assets\Scripts\Client\Objects\FieldCellEditor.cs" />
      <Compile Include="Assets\Scripts\Client\ViewStates\BaseViewState.cs" />
+     <Compile Include="Assets\Scripts\Client\Objects\GameCell.cs" />
      <Compile Include="Assets\Scripts\Client\ViewStates\LobbyViewState.cs" />
      <Compile Include="Assets\Scripts\Client\ModelStates\GameModelState.cs" />
+     <Compile Include="Assets\DOTween\Modules\DOTweenModuleUI.cs" />
+     <Compile Include="Assets\Scripts\Client\Objects\FieldCell.cs" />
      <Compile Include="Assets\Scripts\Client\CollectionUpdater.cs" />
      <Compile Include="Assets\Scripts\Client\GameSettings.cs" />
      <Compile Include="Assets\Scripts\Client\UiMessages.cs" />
      <Compile Include="Assets\Scripts\Client\Objects\WorldObject.cs" />
      <Compile Include="Assets\Scripts\Client\ViewStates\ResultViewState.cs" />
      <Compile Include="Assets\Scripts\Client\Model\ClientModel.cs" />
-     <Compile Include="Assets\Scripts\Client\ComponentPool.cs" />
-     <Compile Include="Assets\Scripts\Client\IUpdateImplementer.cs" />
-     <Compile Include="Assets\Scripts\Client\Objects\FieldCell.cs" />
-     <Compile Include="Assets\Scripts\Client\Objects\GameCell.cs" />
-     <Compile Include="Assets\Scripts\Client\Objects\Cell.cs" />
      <Compile Include="Assets\Scripts\Client\Objects\GameCellEditor.cs" />
-     <Compile Include="Assets\Scripts\Client\Objects\FieldCellEditor.cs" />
-     <Compile Include="Assets\Scripts\Client\View\MainMenu.cs" />
-     <Compile Include="Assets\Scripts\Client\View\GameMenu.cs" />
-     <Compile Include="Assets\DOTween\Modules\DOTweenModuleUI.cs" />
-     <Compile Include="Assets\DOTween\Modules\DOTweenModuleAudio.cs" />
+     <Compile Include="Assets\Scripts\Client\ComponentPool.cs" />
      <Compile Include="Assets\DOTween\Modules\DOTweenModuleUtils.cs" />
-     <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics.cs" />
-     <Compile Include="Assets\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
-     <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics2D.cs" />
-     <Compile Include="Assets\DOTween\Modules\DOTweenModuleSprite.cs" />
-     <Compile Include="Assets\Scripts\Client\Model\Input.cs" />
+     <Compile Include="Assets\Scripts\Client\IUpdateImplementer.cs" />
+     <Compile Include="Assets\Scripts\Client\Objects\Cell.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -334,11 +334,11 @@
  <Reference Include="UnityEditor.UnityConnectModule">
  <HintPath>/Users/alina.chupahina/2020.2.1f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
  </Reference>
- <Reference Include="nunit.framework">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
- </Reference>
  <Reference Include="DOTween">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Assets/DOTween/DOTween.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Assets/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Users/alina.chupahina/2020.2.1f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -692,67 +692,67 @@
  <HintPath>/Users/alina.chupahina/2020.2.1f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/netstandard.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ShaderGraph.Editor">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Universal.Shaders">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Universal.Editor">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Universal.Runtime">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VisualStudio.Editor">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Mathematics.Editor">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Searcher.Editor">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Core.Runtime">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Core.Editor">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Mathematics">
- <HintPath>/Users/alina.chupahina/Projects/Match3/Match3/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+ <HintPath>/Users/alina.chupahina/Projects/PukPuk/Match3/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

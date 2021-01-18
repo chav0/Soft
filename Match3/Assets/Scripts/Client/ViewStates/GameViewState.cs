@@ -1,5 +1,7 @@
-﻿using Client.Model;
+﻿using System.Linq;
+using Client.Model;
 using Client.Objects;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Client.ViewStates
@@ -23,7 +25,16 @@ namespace Client.ViewStates
         
         public override void PreModelUpdate()
         {
-            _input = FillInput(); 
+            
+            if (Context.AppModel.World.GameCells.Any(x => x.Sequence != null))
+            {
+                _input = null;
+            }
+            else
+            {
+                _input = FillInput(); 
+            }
+            
             Context.AppModel.AddGameInput(_input);
         }
 
