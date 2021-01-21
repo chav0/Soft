@@ -53,7 +53,7 @@ namespace Client.ModelStates
 
                 if (haveMoving && _gameLogic.CanCreateNewGameCell())
                 {
-                    _world.GameCells.Add(_gameLogic.CreateNewGameCell());
+                    _world.GameCells.Add(_gameLogic.CreateNewGameCell(GameState.Rules.Colors));
                     GameState.WorldState.SwipeCount++; 
                 }
             }

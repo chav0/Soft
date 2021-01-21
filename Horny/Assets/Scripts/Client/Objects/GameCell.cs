@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace Client.Objects
         [SerializeField] private Color _red;
         [SerializeField] private Color _blue;
         [SerializeField] private Color _green;
+        [SerializeField] private Color _orange;
+        [SerializeField] private Color _sky;
         [SerializeField] private TMP_Text _score;
         
         public Sequence Sequence { get; set; }
@@ -72,6 +75,12 @@ namespace Client.Objects
                 case GameCellColor.Green: 
                     Image.color = _green;
                     break;
+                case GameCellColor.Orange:
+                    Image.color = _orange;
+                    break;
+                case GameCellColor.Sky:
+                    Image.color = _sky;
+                    break;
             }
         }
 
@@ -84,8 +93,11 @@ namespace Client.Objects
 
     public enum GameCellColor
     {
+        None,
         Red,
         Green,
-        Blue
+        Blue,
+        Orange,
+        Sky
     }
 }

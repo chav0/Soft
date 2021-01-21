@@ -1,3 +1,5 @@
+using Client.Objects;
+
 namespace Client.Model
 {
     public class WorldRules
@@ -6,13 +8,15 @@ namespace Client.Model
         public int SecondStarScore;
         public int ThirdStarScore;
         public int SwipeCount;
+        public GameCellColor[] Colors; 
 
         public WorldRules(World world)
         {
             FirstStarScore = world.WorldObject.FirstStarScore; 
             SecondStarScore = world.WorldObject.SecondStarScore; 
             ThirdStarScore = world.WorldObject.ThirdStarScore; 
-            SwipeCount = world.WorldObject.SwipeCount; 
+            SwipeCount = world.WorldObject.SwipeCount;
+            Colors = world.WorldObject.Colors; 
         }
 
         public int GetStarByScore(int score)

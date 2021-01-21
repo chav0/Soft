@@ -18,13 +18,23 @@ namespace Client
             WorldId = worldId; 
             Field = new List<List<FieldCell>>();
             FieldCells = new List<FieldCell>();
+            GameCells = new List<GameCell>();
             foreach (var row in WorldObject.Rows)
             {
                 Field.Add(row.Colomn);
                 FieldCells.AddRange(row.Colomn);
+                foreach (var cell in row.Colomn)
+                {
+                    var gameCell = cell.GetComponentInChildren<GameCell>();
+                    if (gameCell != null)
+                    {
+                        GameCells.Add(gameCell);
+                        gameCell.transform.SetParent(WorldObject.GameCellsContainer);
+                        gameCell.FieldCell = cell;
+                        cell.GameCell = gameCell; 
+                    }
+                }
             }
-
-            GameCells = WorldObject.InitialGameCells; 
         }
         
         public void Dispose()

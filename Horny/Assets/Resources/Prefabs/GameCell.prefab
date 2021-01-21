@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9098039, g: 0.6431373, b: 0.3764706, a: 1}
+  m_Color: {r: 0.9411765, g: 0.7019608, b: 0.6666667, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -204,9 +204,11 @@ MonoBehaviour:
   Image: {fileID: 2426662042927006972}
   CellColor: 1
   FieldCell: {fileID: 0}
-  _red: {r: 0.8784314, g: 0.4862745, b: 0.33333334, a: 1}
-  _blue: {r: 0.44705883, g: 0.7058824, b: 0.8901961, a: 1}
+  _red: {r: 0.9411765, g: 0.7019608, b: 0.6666667, a: 1}
+  _blue: {r: 0.20784314, g: 0.38039216, b: 0.6745098, a: 1}
   _green: {r: 0.9098039, g: 0.6431373, b: 0.3764706, a: 1}
+  _orange: {r: 0.8784314, g: 0.4862745, b: 0.33333334, a: 1}
+  _sky: {r: 0.44705883, g: 0.7058824, b: 0.8901961, a: 1}
   _score: {fileID: 1083031066900384059}
 --- !u!1 &8753016225281607403
 GameObject:

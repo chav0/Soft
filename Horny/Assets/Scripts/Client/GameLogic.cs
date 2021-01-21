@@ -36,16 +36,16 @@ namespace Client
             return _world.FieldCells.Any(x => x.GameCell == null); 
         }
 
-        public GameCell CreateNewGameCell()
+        public GameCell CreateNewGameCell(GameCellColor[] colors)
         {
             var emptyFieldCells = _world.FieldCells.Where(x => x.GameCell == null && x.State == FieldCellState.Active);
             var randomCell = UnityEngine.Random.Range(0, emptyFieldCells.Count());
             var fieldCell = emptyFieldCells.ElementAt(randomCell);
             var gameCell = _scene.CreateGameCell(); 
-            var randomColor = UnityEngine.Random.Range(0, 3);
+            var randomColor = UnityEngine.Random.Range(0, colors.Length);
             gameCell.transform.SetParent(_world.WorldObject.GameCellsContainer);
             gameCell.transform.position = fieldCell.transform.position;
-            gameCell.Colorize((GameCellColor) randomColor);
+            gameCell.Colorize(colors[randomColor]);
             gameCell.FieldCell = fieldCell;
             fieldCell.GameCell = gameCell; 
             return gameCell; 
@@ -97,7 +97,8 @@ namespace Client
                         var nextCell = row[k];
                         if (nextCell.GameCell != null)
                         {
-                            if (fromCell.GameCell.CellColor == nextCell.GameCell.CellColor)
+                            if (fromCell.GameCell.CellColor == nextCell.GameCell.CellColor && fromCell.GameCell.CellColor != GameCellColor.None && 
+                            nextCell.GameCell.CellColor != GameCellColor.None)
                             {
                                 break;
                             }
@@ -152,7 +153,8 @@ namespace Client
                         var nextCell = row[k];
                         if (nextCell.GameCell != null)
                         {
-                            if (fromCell.GameCell.CellColor == nextCell.GameCell.CellColor)
+                            if (fromCell.GameCell.CellColor == nextCell.GameCell.CellColor && fromCell.GameCell.CellColor != GameCellColor.None && 
+                                nextCell.GameCell.CellColor != GameCellColor.None)
                             {
                                 break;
                             }
@@ -209,7 +211,8 @@ namespace Client
                         var nextCell = colomn[k];
                         if (nextCell.GameCell != null)
                         {
-                            if (fromCell.GameCell.CellColor == nextCell.GameCell.CellColor)
+                            if (fromCell.GameCell.CellColor == nextCell.GameCell.CellColor && fromCell.GameCell.CellColor != GameCellColor.None && 
+                                nextCell.GameCell.CellColor != GameCellColor.None)
                             {
                                 break;
                             }
@@ -266,7 +269,8 @@ namespace Client
                         var nextCell = colomn[k];
                         if (nextCell.GameCell != null)
                         {
-                            if (fromCell.GameCell.CellColor == nextCell.GameCell.CellColor)
+                            if (fromCell.GameCell.CellColor == nextCell.GameCell.CellColor && fromCell.GameCell.CellColor != GameCellColor.None && 
+                                nextCell.GameCell.CellColor != GameCellColor.None)
                             {
                                 break;
                             }
