@@ -10,7 +10,9 @@ namespace Client.View
         private int _swipeCount;
         private int _processedSwipeCount;
         private bool _dragging; 
-        private Direction? _direction; 
+        private Direction? _direction;
+
+        [SerializeField] private AudioController _audioController; 
 
         public GameInput GetInput()
         {
@@ -24,6 +26,8 @@ namespace Client.View
                 return null;
 
             _processedSwipeCount = _swipeCount; 
+            
+            _audioController.PlaySwipe();
             
             return new GameInput
             {

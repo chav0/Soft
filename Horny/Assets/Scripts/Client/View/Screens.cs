@@ -8,6 +8,7 @@ namespace Client.View
         public GameMenu GameMenu; 
         public ChooseWorldMenu ChooseWorld; 
         public ResultScreen ResultScreen; 
+        public AudioController AudioController; 
         public Transform WorldContainer;
 
         public void SetMainMenu()

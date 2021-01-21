@@ -13,6 +13,7 @@ namespace Client.View
         [SerializeField] private TMP_Text _score; 
         [SerializeField] private TMP_Text _level;
         [SerializeField] private StarObject[] _stars;
+        [SerializeField] private AudioController _audioController; 
 
         public void SetResults(int score, int stars, int worldId)
         {
@@ -29,6 +30,11 @@ namespace Client.View
             }
 
             _level.text = $"World {worldId}"; 
+            
+            if (win)
+                _audioController.PlayWin();
+            else 
+                _audioController.PlayLose();
         }
     }
 }

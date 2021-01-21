@@ -26,13 +26,13 @@ SpriteAtlas:
       padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 1
-      enableTightPacking: 1
+      enableRotation: 0
+      enableTightPacking: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: cdce5352d61c241f490b268500b3e0b9, type: 3}
-    totalSpriteSurfaceArea: 5079356
+    totalSpriteSurfaceArea: 5089356
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -40,6 +40,7 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 652c9db0c6f86438bb19e2282de3d0d9, type: 3}
   - {fileID: 21300000, guid: e9cc26318e83b417789d10257ab364f2, type: 3}
+  - {fileID: 21300000, guid: b46514a17b11a4576ae05fde301424bf, type: 3}
   - {fileID: 21300000, guid: 5976e022302ba4dd19c1c6071e3b1904, type: 3}
   - {fileID: 21300000, guid: dba83c93a9ff2454dbca33e385c4ab31, type: 3}
   - {fileID: 21300000, guid: 30e0ca45312d348889eaecbd726dabef, type: 3}
@@ -61,6 +62,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - LockedWorld
   - PlayButton
+  - Circle
   - SimpleButton
   - StarLayout
   - Progress
