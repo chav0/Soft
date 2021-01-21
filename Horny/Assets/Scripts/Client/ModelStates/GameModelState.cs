@@ -10,11 +10,13 @@ namespace Client.ModelStates
         private readonly int _worldId;
         private GameLogic _gameLogic;
         private World _world;
+        private GameState _gameState;
         private UnityScene _scene;
         private GameInput _input;
         private int _initialBestScore;
-        
+
         public override World World => _world;
+        public override GameState GameState => _gameState;
         public override ModelStatus Status => ModelStatus.Battle;
 
         public GameModelState(int worldId)
@@ -28,9 +30,9 @@ namespace Client.ModelStates
             _gameLogic = new GameLogic(Context.Settings, _scene);
             _world = _gameLogic.CreateNewWorld(_worldId);
             _gameLogic.Init(_world);
+            _gameState = new GameState(_world);
             var previousGamesInfo = Context.PlayerProfileStorage.WorldInfos.FirstOrDefault(x => x.WorldId == _worldId);
-            _initialBestScore = previousGamesInfo?.Record ?? 0; 
-            Context.Score = 0; 
+            _initialBestScore = previousGamesInfo?.Record ?? 0;
         }
         
         public override void OnExit()
@@ -42,6 +44,8 @@ namespace Client.ModelStates
         public override void Update()
         {
             AddScore();
+            UpdateWorldInfo(); 
+            CheckToOpenNewWorld(); 
             
             if (_input != null)
             {
@@ -49,7 +53,8 @@ namespace Client.ModelStates
 
                 if (haveMoving && _gameLogic.CanCreateNewGameCell())
                 {
-                    _world.GameCells.Add(_gameLogic.CreateNewGameCell()); 
+                    _world.GameCells.Add(_gameLogic.CreateNewGameCell());
+                    GameState.WorldState.SwipeCount++; 
                 }
             }
         }
@@ -63,25 +68,50 @@ namespace Client.ModelStates
         {
             foreach (var gameCell in _world.GameCells)
             {
-                Context.Score += Context.Settings.GetScoreForMerge(gameCell.MergeCount);
+                GameState.WorldState.Score += Context.Settings.GetScoreForMerge(gameCell.MergeCount);
                 gameCell.MergeCount = 0; 
             }
+        }
 
-            if (_initialBestScore != Context.Score)
+        private void UpdateWorldInfo()
+        {
+            var currentScore = GameState.WorldState.Score;
+            
+            var infos = Context.PlayerProfileStorage.WorldInfos;
+            var previousGamesInfo = Context.PlayerProfileStorage.WorldInfos.FirstOrDefault(x => x.WorldId == _worldId);
+            if (previousGamesInfo == null)
             {
-                var infos = Context.PlayerProfileStorage.WorldInfos; 
-                var previousGamesInfo = Context.PlayerProfileStorage.WorldInfos.FirstOrDefault(x => x.WorldId == _worldId);
-                if (previousGamesInfo == null)
+                previousGamesInfo = new WorldInfo
                 {
-                    previousGamesInfo = new WorldInfo
-                    {
-                        WorldId = _worldId
-                    };
-                    infos.Add(previousGamesInfo);
-                }
+                    WorldId = _worldId
+                };
+                infos.Add(previousGamesInfo);
+            }
 
-                previousGamesInfo.Record = Context.Score;
-                Context.PlayerProfileStorage.WorldInfos = infos; 
+            var newStars = GameState.Rules.GetStarByScore(currentScore);
+
+            if (previousGamesInfo.Stars < newStars)
+            {
+                previousGamesInfo.Stars = newStars;
+                Context.PlayerProfileStorage.WorldInfos = infos;
+            }
+
+            if (previousGamesInfo.Record < currentScore)
+            {
+                previousGamesInfo.Record = currentScore;
+                Context.PlayerProfileStorage.WorldInfos = infos;
+            }
+            
+        }
+
+        private void CheckToOpenNewWorld()
+        {
+            if (Context.PlayerProfileStorage.LastCompletedWorld >= _world.WorldId)
+                return;
+            
+            if (GameState.Rules.FirstStarScore <= GameState.WorldState.Score && _world.WorldObject.SwipeCount >= GameState.WorldState.SwipeCount)
+            {
+                Context.PlayerProfileStorage.LastCompletedWorld = Mathf.Max(_world.WorldId, Context.PlayerProfileStorage.LastCompletedWorld);
             }
         }
     }

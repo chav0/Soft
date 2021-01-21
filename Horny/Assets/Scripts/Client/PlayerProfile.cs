@@ -14,7 +14,8 @@ namespace Client
     public class WorldInfo
     {
         public int WorldId;
-        public int Record; 
+        public int Record;
+        public int Stars; 
     }
 }
 

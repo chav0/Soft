@@ -35,16 +35,18 @@ namespace Client.Objects
 
             Sequence?.Kill();
             Sequence = DOTween.Sequence()
-                .Append(transform.DOMove(targetPosition, distance / 100f * 0.1f).SetEase(Ease.InOutQuart));
+                .Append(transform.DOMove(targetPosition, distance / 250f * 0.1f).SetEase(Ease.InOutQuart));
             if (score != 0)
             {
-                _score.text = score.ToString(); 
+                _score.text = $"+{score}";
                 _score.transform.localScale = Vector3.zero;
                 var rect = _score.GetComponent<RectTransform>(); 
                 rect.anchoredPosition = Vector2.zero;
                 rect.gameObject.SetActive(true);
                 Sequence.Append(_score.transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBack))
-                    .Join(rect.DOAnchorPosY(30f, 1f).SetEase(Ease.OutBack))
+                    .Join(rect.DOAnchorPosY(150f, 1f).SetEase(Ease.OutBack))
+                    .Join(transform.DOScale(1.1f, 0.2f))
+                    .Insert(distance / 250f * 0.1f + 0.2f, transform.DOScale(1f, 0.15f))
                     .AppendCallback(() => rect.gameObject.SetActive(false));
             }
 

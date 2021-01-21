@@ -14,6 +14,7 @@ namespace Client.View
         public readonly Screens Screens;
         
         public BaseViewState CurrentState { get; set; }
+        public GameState GameState => AppModel.CurrentState.GameState; 
         
         public ClientView(Resources resources, ClientModel appModel, UnityScene scene, Screens screens, Camera camera)
         {

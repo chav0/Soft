@@ -13,8 +13,7 @@ namespace Client.Model
         public BaseModelState CurrentState { get; set; }
         public ModelStatus Status => CurrentState.Status; 
         public World World => CurrentState.World;
-        public int Score { get; set; }
-        
+
         public ClientModel(GameSettings gameSettings, UnityScene scene, Resources resources)
         {
             Settings = gameSettings;

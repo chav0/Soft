@@ -1,31 +1,45 @@
 ﻿using System.Linq;
 using Client.Model;
+using Client.View;
 using UnityEngine;
 
 namespace Client.ViewStates
 {
     public class GameViewState : BaseViewState
     {
-        private GameInput _input; 
+        private GameInput _input;
+        private GameMenu _gameMenu; 
         
         public override void OnEnter()
         {
+            _gameMenu = Context.Screens.GameMenu; 
+            
             Context.Screens.SetGameMenu();
-            Context.Screens.GameMenu.Exit.onClick.RemoveAllListeners();
-            Context.Screens.GameMenu.Exit.onClick.AddListener(() =>
+            
+            _gameMenu.Exit.onClick.RemoveAllListeners();
+            _gameMenu.Exit.onClick.AddListener(() =>
             {
                 Context.AppModel.DeleteWorld();
-                SetState(new LobbyViewState());
+                SetState(new ChooseWorldViewState());
+            });
+            
+            _gameMenu.Restart.onClick.RemoveAllListeners();
+            _gameMenu.Restart.onClick.AddListener(() =>
+            {
+                Context.AppModel.CreateWorld(Context.AppModel.World.WorldId);
+                SetState(new GameViewState());
             });
 
-            AnimateCells(); 
+            AnimateCells();
+            SetProgress(); 
         }
         
         public override void PreModelUpdate()
         {
             var worldInfo = Context.AppModel.PlayerProfileStorage.WorldInfos.FirstOrDefault(x => x.WorldId == Context.AppModel.World.WorldId);
             var record = worldInfo?.Record ?? 0; 
-            Context.Screens.GameMenu.SetScoreAndRecord(Context.AppModel.Score, record);
+            _gameMenu.SetScoreAndRecord(Context.GameState.WorldState.Score, record);
+            _gameMenu.SetSwipeCount(Context.GameState.Rules.SwipeCount - Context.GameState.WorldState.SwipeCount);
             if (Context.AppModel.World.GameCells.Any(x => x.Sequence != null))
             {
                 _input = null;
@@ -43,7 +57,29 @@ namespace Client.ViewStates
             if (_input != null)
             {
                 AnimateCells();
+                SetProgress(); 
             }
+
+            CheckEnd(); 
+        }
+
+        private void CheckEnd()
+        {
+            var swipes = Context.GameState.WorldState.SwipeCount;
+            var score = Context.GameState.WorldState.Score;
+            var rules = Context.GameState.Rules;
+            var stars = rules.GetStarByScore(score);
+
+            if (rules.SwipeCount - swipes <= 0 || stars == 3)
+                SetState(new ResultViewState());
+        }
+
+        private void SetProgress()
+        {
+            var score = Context.GameState.WorldState.Score;
+            var rules = Context.GameState.Rules; 
+            
+            _gameMenu.ProgressView.SetProgress(score, rules.FirstStarScore, rules.SecondStarScore, rules.ThirdStarScore, rules.GetStarByScore(score));
         }
 
         private void AnimateCells()

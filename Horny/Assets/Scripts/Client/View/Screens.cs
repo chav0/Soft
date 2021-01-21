@@ -7,6 +7,7 @@ namespace Client.View
         public MainMenu MainMenu; 
         public GameMenu GameMenu; 
         public ChooseWorldMenu ChooseWorld; 
+        public ResultScreen ResultScreen; 
         public Transform WorldContainer;
 
         public void SetMainMenu()
@@ -14,6 +15,7 @@ namespace Client.View
             MainMenu.gameObject.SetActive(true);
             GameMenu.gameObject.SetActive(false);
             ChooseWorld.gameObject.SetActive(false);
+            ResultScreen.gameObject.SetActive(false);
         }
         
         public void SetGameMenu()
@@ -21,6 +23,7 @@ namespace Client.View
             MainMenu.gameObject.SetActive(false);
             GameMenu.gameObject.SetActive(true);
             ChooseWorld.gameObject.SetActive(false);
+            ResultScreen.gameObject.SetActive(false);
         }
 
         public void SetChooseWorldView()
@@ -28,6 +31,14 @@ namespace Client.View
             MainMenu.gameObject.SetActive(false);
             GameMenu.gameObject.SetActive(false);
             ChooseWorld.gameObject.SetActive(true);
+            ResultScreen.gameObject.SetActive(false);
+        }
+        
+        public void SetResultView()
+        {
+            MainMenu.gameObject.SetActive(false);
+            ChooseWorld.gameObject.SetActive(false);
+            ResultScreen.gameObject.SetActive(true);
         }
     }
 }

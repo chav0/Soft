@@ -7,6 +7,7 @@ namespace Client.ModelStates
     {
         public ClientModel Context; 
         public virtual World World { get; protected set; }
+        public virtual GameState GameState { get; protected set; }
         public virtual ModelStatus Status { get; protected set; }
         
         
