@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: cdce5352d61c241f490b268500b3e0b9, type: 3}
+    totalSpriteSurfaceArea: 5079356
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 652c9db0c6f86438bb19e2282de3d0d9, type: 3}
+  - {fileID: 21300000, guid: e9cc26318e83b417789d10257ab364f2, type: 3}
+  - {fileID: 21300000, guid: 5976e022302ba4dd19c1c6071e3b1904, type: 3}
+  - {fileID: 21300000, guid: dba83c93a9ff2454dbca33e385c4ab31, type: 3}
+  - {fileID: 21300000, guid: 30e0ca45312d348889eaecbd726dabef, type: 3}
+  - {fileID: 21300000, guid: 4b6ed0268758a4f788ef81702f6b4bf6, type: 3}
+  - {fileID: 21300000, guid: 0304b2a6300ab41e983af2f77612718d, type: 3}
+  - {fileID: 21300000, guid: ac4f92f6cb6d346c09eb36470a0ff32c, type: 3}
+  - {fileID: 21300000, guid: 5f3cb6f6e91a546459099989c10e09e1, type: 3}
+  - {fileID: 21300000, guid: 610ad267dbfc44f31bbed4bd033bb010, type: 3}
+  - {fileID: 21300000, guid: c1aedf67568f942c7b58f7cd9fbe2e43, type: 3}
+  - {fileID: 21300000, guid: 6172e4089bd224cbc860d4d8c9a0432f, type: 3}
+  - {fileID: 21300000, guid: 77efaba8f0d4b43908f10fcc3b387912, type: 3}
+  - {fileID: 21300000, guid: 5bd43219366aa46bf8d3c2b7425d9217, type: 3}
+  - {fileID: 21300000, guid: f7573489de09d4b64b6c8c77fb5dd165, type: 3}
+  - {fileID: 21300000, guid: a49370a90b57b4d24a7cfe17fadaa499, type: 3}
+  - {fileID: 21300000, guid: 13f92cf95eba941858465e09df897d89, type: 3}
+  - {fileID: 21300000, guid: 674b1d3d0712c45719f0c00b4c8aa035, type: 3}
+  - {fileID: 21300000, guid: 29d5acaee0c91433ab320591567e57a5, type: 3}
+  - {fileID: 21300000, guid: a1da8dde8a04742239b5db547f8ae4cb, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - LockedWorld
+  - PlayButton
+  - SimpleButton
+  - StarLayout
+  - Progress
+  - IconNext
+  - GameMenu
+  - SimpleButtonTap
+  - GameCell
+  - PlayButtonTap
+  - WorldButton
+  - IconRestart
+  - MenuIcon
+  - Triangle
+  - GameCellColor
+  - FieldCell
+  - NewWorld
+  - WorldButtonTap
+  - EmptyStar
+  - RecievedStar
+  m_RenderDataMap: {}
+  m_Tag: UI
+  m_IsVariant: 0
