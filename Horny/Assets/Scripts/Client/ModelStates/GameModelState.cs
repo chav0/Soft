@@ -45,7 +45,8 @@ namespace Client.ModelStates
         {
             AddScore();
             UpdateWorldInfo(); 
-            CheckToOpenNewWorld(); 
+            CheckToOpenNewWorld();
+            CheckTheEnd(); 
             
             if (_input != null)
             {
@@ -115,6 +116,17 @@ namespace Client.ModelStates
             {
                 Context.PlayerProfileStorage.LastCompletedWorld = Mathf.Max(_world.WorldId, Context.PlayerProfileStorage.LastCompletedWorld);
             }
+        }
+
+        private void CheckTheEnd()
+        {
+            var swipes = GameState.WorldState.SwipeCount;
+            var score = GameState.WorldState.Score;
+            var rules = GameState.Rules;
+            var stars = rules.GetStarByScore(score);
+
+            if (rules.SwipeCount - swipes <= 0 || stars == 3)
+                GameState.WorldState.IsTheEnd = true;
         }
     }
 }

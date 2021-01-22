@@ -65,13 +65,10 @@ namespace Client.ViewStates
 
         private void CheckEnd()
         {
-            var swipes = Context.GameState.WorldState.SwipeCount;
-            var score = Context.GameState.WorldState.Score;
-            var rules = Context.GameState.Rules;
-            var stars = rules.GetStarByScore(score);
-
-            if (rules.SwipeCount - swipes <= 0 || stars == 3)
+            if (Context.GameState.WorldState.IsTheEnd)
+            {
                 SetState(new ResultViewState());
+            }
         }
 
         private void SetProgress()

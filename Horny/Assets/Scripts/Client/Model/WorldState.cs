@@ -4,5 +4,6 @@ namespace Client.Model
     {
         public int Score { get; set; }
         public int SwipeCount { get; set; }
+        public bool IsTheEnd { get; set; }
     }
 }

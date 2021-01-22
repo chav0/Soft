@@ -13,6 +13,7 @@ namespace Client.Model
             {
                 Score = 0,
                 SwipeCount = 0,
+                IsTheEnd = false
             }; 
             
             Rules = new WorldRules(world);
