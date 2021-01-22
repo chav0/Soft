@@ -56,6 +56,8 @@ namespace Client.ModelStates
                     _world.GameCells.Add(_gameLogic.CreateNewGameCell(GameState.Rules.Colors));
                     GameState.WorldState.SwipeCount++; 
                 }
+
+                _input = null; 
             }
         }
 

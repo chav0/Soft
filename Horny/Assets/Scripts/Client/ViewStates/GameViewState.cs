@@ -57,9 +57,9 @@ namespace Client.ViewStates
             if (_input != null)
             {
                 AnimateCells();
-                SetProgress(); 
             }
-
+            
+            SetProgress(); 
             CheckEnd(); 
         }
 

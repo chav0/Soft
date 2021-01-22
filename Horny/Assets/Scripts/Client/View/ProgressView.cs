@@ -8,8 +8,15 @@ namespace Client.View
         [SerializeField] private Image _progress;
         [SerializeField] private StarObject[] _stars;
 
+        private int _score; 
+
         public void SetProgress(int score, int firstScore, int secondScore, int thirdScore, int stars)
         {
+            if (_score == score)
+                return;
+
+            _score = score; 
+            
             for (var i = 0; i < _stars.Length; i++)
             {
                 var star = _stars[i]; 
