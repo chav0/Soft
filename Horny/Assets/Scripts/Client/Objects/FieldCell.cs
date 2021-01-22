@@ -12,13 +12,22 @@ namespace Client.Objects
 #if UNITY_EDITOR
         public void OnEnable()
         {
-            Image = GetComponent<Image>();
+            Image = GetComponentInChildren<Image>();
         }
 #endif
 
         public void Colorize(FieldCellState state)
         {
             State = state;
+            switch (state)
+            {
+                case FieldCellState.Active:
+                    Image.gameObject.SetActive(true);
+                    break;
+                case FieldCellState.Inactive:
+                    Image.gameObject.SetActive(false);
+                    break;
+            }
         }
     }
 
