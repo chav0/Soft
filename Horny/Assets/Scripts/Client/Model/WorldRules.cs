@@ -8,6 +8,8 @@ namespace Client.Model
         public int SecondStarScore;
         public int ThirdStarScore;
         public int SwipeCount;
+        public int MaxNewCells;
+        public int MinNewCells;
         public GameCellColor[] Colors; 
 
         public WorldRules(World world)
@@ -16,6 +18,8 @@ namespace Client.Model
             SecondStarScore = world.WorldObject.SecondStarScore; 
             ThirdStarScore = world.WorldObject.ThirdStarScore; 
             SwipeCount = world.WorldObject.SwipeCount;
+            MaxNewCells = world.WorldObject.MaxNewCells; 
+            MinNewCells = world.WorldObject.MinNewCells; 
             Colors = world.WorldObject.Colors; 
         }
 

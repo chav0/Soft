@@ -18,9 +18,12 @@ namespace Client.Objects
         [SerializeField] private Color _orange;
         [SerializeField] private Color _sky;
         [SerializeField] private TMP_Text _score;
-        
-        public Sequence Sequence { get; set; }
+        [SerializeField] private float _speed; 
+
+        private Sequence _sequence;
         private Sequence _sequenceAppearance;
+        
+        public bool IsMoving { get; private set; }
 
         private void OnEnable()
         {
@@ -33,31 +36,40 @@ namespace Client.Objects
 
         public void MoveToFieldCell(int score)
         {
+            _score.gameObject.SetActive(false);
+            
             var targetPosition = FieldCell.transform.position;
-            var distance = (targetPosition - transform.position).magnitude; 
+            var distance = (targetPosition - transform.position).magnitude;
 
-            Sequence?.Kill();
-            Sequence = DOTween.Sequence()
-                .Append(transform.DOMove(targetPosition, distance / 250f * 0.1f).SetEase(Ease.InOutQuart));
+            if (distance > 0)
+                IsMoving = true; 
+
+            _sequence?.Kill();
+            _sequence = DOTween.Sequence()
+                .Append(transform.DOMove(targetPosition, distance * _speed).SetEase(Ease.InOutQuart))
+                .AppendCallback(() => IsMoving = false);
             if (score != 0)
             {
                 _score.text = $"+{score}";
                 _score.transform.localScale = Vector3.zero;
                 var rect = _score.GetComponent<RectTransform>(); 
                 rect.anchoredPosition = Vector2.zero;
-                rect.gameObject.SetActive(true);
-                Sequence.Append(_score.transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBack))
+                _score.gameObject.SetActive(true);
+                _sequence.Append(_score.transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBack))
                     .Join(rect.DOAnchorPosY(150f, 1f).SetEase(Ease.OutBack))
                     .Join(transform.DOScale(1.1f, 0.2f))
-                    .Insert(distance / 250f * 0.1f + 0.2f, transform.DOScale(1f, 0.15f))
-                    .AppendCallback(() => rect.gameObject.SetActive(false));
+                    .Insert(distance * _speed + 0.2f, transform.DOScale(1f, 0.15f))
+                    .AppendCallback(() =>
+                    {
+                        _score.gameObject.SetActive(false);
+                    });
             }
 
-            Sequence.AppendCallback(() =>
+            _sequence.AppendCallback(() =>
             {
                 if (NeedDelete) Destroy(gameObject);
 
-                Sequence = null;
+                _sequence = null;
             });
         }
 
@@ -86,7 +98,7 @@ namespace Client.Objects
 
         private void OnDestroy()
         {
-            Sequence?.Kill();
+            _sequence?.Kill();
             _sequenceAppearance?.Kill();
         }
     }

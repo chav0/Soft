@@ -11,7 +11,9 @@ namespace Client.Objects
         public int FirstStarScore;
         public int SecondStarScore;
         public int ThirdStarScore;
-        public int SwipeCount; 
+        public int SwipeCount;
+        public int MaxNewCells; 
+        public int MinNewCells; 
         public GameCellColor[] Colors; 
     }
     

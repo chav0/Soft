@@ -100,6 +100,8 @@ MonoBehaviour:
   SecondStarScore: 170
   ThirdStarScore: 200
   SwipeCount: 80
+  MaxNewCells: 3
+  MinNewCells: 1
   Colors: 0300000005000000
 --- !u!222 &1146877647113181492
 CanvasRenderer:

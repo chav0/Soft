@@ -33,7 +33,7 @@ namespace Client
 
         public bool CanCreateNewGameCell()
         {
-            return _world.FieldCells.Any(x => x.GameCell == null); 
+            return _world.FieldCells.Any(x => x.GameCell == null && x.State == FieldCellState.Active); 
         }
 
         public GameCell CreateNewGameCell(GameCellColor[] colors)

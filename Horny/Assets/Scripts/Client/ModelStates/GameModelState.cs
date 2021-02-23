@@ -51,11 +51,21 @@ namespace Client.ModelStates
             if (_input != null)
             {
                 var haveMoving = _gameLogic.ApplyInput(_input);
+                var newCellsCount = Random.Range(GameState.Rules.MinNewCells, GameState.Rules.MaxNewCells + 1); 
 
-                if (haveMoving && _gameLogic.CanCreateNewGameCell())
+                for (var i = 0; i < newCellsCount; i++)
                 {
-                    _world.GameCells.Add(_gameLogic.CreateNewGameCell(GameState.Rules.Colors));
-                    GameState.WorldState.SwipeCount++; 
+                    if (haveMoving && _gameLogic.CanCreateNewGameCell())
+                    {
+                        _world.GameCells.Add(_gameLogic.CreateNewGameCell(GameState.Rules.Colors));
+                        
+                        if (i == 0)
+                            GameState.WorldState.SwipeCount++;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
 
                 _input = null; 

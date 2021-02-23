@@ -40,7 +40,7 @@ namespace Client.ViewStates
             var record = worldInfo?.Record ?? 0; 
             _gameMenu.SetScoreAndRecord(Context.GameState.WorldState.Score, record);
             _gameMenu.SetSwipeCount(Context.GameState.Rules.SwipeCount - Context.GameState.WorldState.SwipeCount);
-            if (Context.AppModel.World.GameCells.Any(x => x.Sequence != null))
+            if (Context.AppModel.World.GameCells.Any(x => x.IsMoving))
             {
                 _input = null;
             }
