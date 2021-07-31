@@ -1,2 +1,2 @@
-# PukPuk
+# Soft
 Best game ever 
